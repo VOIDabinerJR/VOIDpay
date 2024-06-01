@@ -30,6 +30,14 @@ public class Wallet {
     public Wallet() {
     }
 
+    public Wallet(String fullName, String biNuit, String email, String password, WalletType walletType) {
+        this.fullName = fullName;
+        this.biNuit = biNuit;
+        this.email = email;
+        this.password = password;
+        this.walletType = walletType;
+    }
+
     public Long getId() {
         return id;
     }
