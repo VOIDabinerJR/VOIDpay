@@ -8,12 +8,14 @@ public class WalletType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String desciption;
+    private String description;
 
     public WalletType() {
     }
 
     public WalletType(Long id, String description) {
+        this.id = id;
+        this.description = description;
     }
 
     public Long getId() {
@@ -24,12 +26,12 @@ public class WalletType {
         this.id = id;
     }
 
-    public String getDesciption() {
-        return desciption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesciption(String description) {
-        this.desciption = desciption;
+    public void setDescription(String description) {
+        this.description = this.description;
     }
     public  enum Enum{
         USER(1L, "user"),

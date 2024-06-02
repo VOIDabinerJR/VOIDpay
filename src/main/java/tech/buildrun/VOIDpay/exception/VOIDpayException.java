@@ -7,7 +7,7 @@ import org.springframework.http.ProblemDetail;
 public class VOIDpayException extends RuntimeException{
     public ProblemDetail toProblemDetail(){
         var pb= ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
-        pb.setDetail("VOIDpay Internal server error");
+        pb.setTitle("VOIDpay Internal server error");
         return pb;
     }
 }

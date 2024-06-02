@@ -8,6 +8,8 @@ services:
       - MYSQL_PASSWORD=0000
       - MYSQL_DATABASE=voidpay
       - MYSQL_ROOT_PASSWORD=0000
+    expose:
+      - "3306"
     ports:
       - "3307:3306"
     volumes:

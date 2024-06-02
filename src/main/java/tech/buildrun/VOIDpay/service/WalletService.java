@@ -10,7 +10,7 @@ import tech.buildrun.VOIDpay.exception.WalletDataAlreadyExistsException;
 import tech.buildrun.VOIDpay.repository.WalletRepository;
 
 @Service
-public class WalletService {
+public class  WalletService {
     private final WalletRepository walletRepository;
 
 
@@ -21,10 +21,10 @@ public class WalletService {
 
 
     public Wallet createWallet(CreateWalletDto dto) {
-//        var walletDb = walletRepository.findByBiNuitorEmail(dto.biNuit(), dto.email());
-//        if (walletDb.isPresent()){
-//            throw  new WalletDataAlreadyExistsException("BiNuit already exists");
-//        }
+        var walletDb = walletRepository.findByBiNuitorEmail(dto.biNuit(), dto.email());
+        if (walletDb.isPresent()){
+            throw  new WalletDataAlreadyExistsException("BiNuit already exists");
+        }
 
 
         return walletRepository.save(dto.toWallet());
