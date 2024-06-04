@@ -17,13 +17,13 @@ public class Wallet {
     private String fullName;
     @Column(name = "bi_nuit", unique = true)
     private String biNuit;
-    @Column(name = "email",unique = true)
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "password")
     private String password;
     @Column(name = "balance")
-    private BigDecimal balance= BigDecimal.ZERO;
-    @JoinColumn(name ="wallet_type_id")
+    private BigDecimal balance = BigDecimal.ZERO;
+    @JoinColumn(name = "wallet_type_id")
     @ManyToOne
     private WalletType walletType;
 
@@ -37,6 +37,16 @@ public class Wallet {
         this.password = password;
         this.walletType = walletType;
     }
+
+    public boolean isTransferAllowedWalletType() {
+
+        return this.walletType.equals(WalletType.Enum.USER.get());
+    }
+
+    public boolean isBalanceBiggerThan(BigDecimal value) {
+        return this.balance.doubleValue() > value.doubleValue();
+    }
+
 
     public Long getId() {
         return id;
@@ -92,5 +102,14 @@ public class Wallet {
 
     public void setWalletType(WalletType walletType) {
         this.walletType = walletType;
+    }
+
+
+    public void debit(BigDecimal value) {
+        this.balance = this.balance.subtract(value);
+    }
+
+    public void credit(BigDecimal value) {
+        this.balance =  this.balance.add(value);
     }
 }

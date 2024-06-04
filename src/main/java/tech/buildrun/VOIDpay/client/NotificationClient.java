@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import tech.buildrun.VOIDpay.entity.Transfer;
 
 @FeignClient(
-        url = "${ client.notification-service.url}"
+        name = "NotificationClient",
+        url = "${client.notification-service.url}"
 )
 public interface NotificationClient {
     @PostMapping
