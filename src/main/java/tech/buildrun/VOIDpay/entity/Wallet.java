@@ -23,6 +23,10 @@ public class Wallet {
     private String password;
     @Column(name = "balance")
     private BigDecimal balance = BigDecimal.ZERO;
+
+//    @Column(name = "endereco")
+//    private String endereco;
+//
     @JoinColumn(name = "wallet_type_id")
     @ManyToOne
     private WalletType walletType;
@@ -39,6 +43,10 @@ public class Wallet {
     }
 
     public boolean isTransferAllowedWalletType() {
+
+        return this.walletType.equals(WalletType.Enum.USER.get());
+    }
+    public boolean isDepositAllowedWalletType() {
 
         return this.walletType.equals(WalletType.Enum.USER.get());
     }

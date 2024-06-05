@@ -52,7 +52,7 @@ public class TransferService {
         walletRepository.save(receiver);
        var transferResult = transferRepository.save(transfer);
 
-        CompletableFuture.runAsync(() -> notificationService.sendNotification(transferResult));
+        CompletableFuture.runAsync(() -> notificationService.sendTransferNotification(transferResult));
 
         return transferResult;
     }
@@ -67,7 +67,7 @@ public class TransferService {
             throw new insufficienteBalanceException();
 
         }
-        if (!authorizationService.isAuthorized(transferDto)){
+        if (!authorizationService.isAuthorizedToTransfer(transferDto)){
             throw new transferNotAllowedException();
         }
     }
